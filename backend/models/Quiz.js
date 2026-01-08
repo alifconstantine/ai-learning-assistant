@@ -16,7 +16,7 @@ const quizSchema = new mongoose.Schema({
         required: true,
         trim: true,
     },
-    question: [{
+    questions: [{
         question: {
             type: String,
             required: true,

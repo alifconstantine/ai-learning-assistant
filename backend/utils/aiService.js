@@ -1,5 +1,5 @@
 import dotenv from 'dotenv'
-import { OpenAI } from "openai/client.js"
+import { OpenAI } from "openai"
 
 dotenv.config()
 

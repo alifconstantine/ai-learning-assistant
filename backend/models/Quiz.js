@@ -40,7 +40,7 @@ const quizSchema = new mongoose.Schema({
             default: 'medium'
         }
     }],
-    userAnswer: [{
+    userAnswers: [{
         questionIndex: {
             type: Number,
             required: true,

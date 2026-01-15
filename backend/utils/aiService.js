@@ -17,7 +17,7 @@ if (!process.env.OPENROUTER_API_KEY) {
     process.exit(1)
 }
 
-const MODEL_NAME = "deepseek/deepseek-v3.2"
+const MODEL_NAME = "google/gemini-3-flash-preview"
 
 const generateOpenRouter = async (prompt) => {
     const completion = await ai.chat.completions.create({

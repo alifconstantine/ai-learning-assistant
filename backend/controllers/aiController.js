@@ -45,7 +45,7 @@ export const generateFlashcards = async (req, res, next) => {
             userId: req.user._id,
             documentId: document._id,
             cards: cards.map(card => ({
-                question: card.question,
+                questions: card.question,
                 answer: card.answer,
                 difficulty: card.difficulty,
                 reviewCount: 0,

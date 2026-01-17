@@ -16,6 +16,6 @@ router.get("/", getAllFlashcardSets)
 router.get("/:documentId", getFlashcards)
 router.post("/:cardId/review", reviewFlashcard)
 router.put("/:cardId/star", toggleStarFlashcard)
-router.delete('/:Id', deleteFlashcardSet)
+router.delete('/:setId', deleteFlashcardSet)
 
 export default router

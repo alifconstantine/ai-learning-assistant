@@ -95,7 +95,7 @@ const FlashcardManager = ({ documentId }) => {
   const handleToggleStar = async (cardId) => {
     try {
         await flashcardService.toggleStar(cardId)
-        const updateSets = flashcardService.map((set) => {
+        const updateSets = flashcardSets.map((set) => {
             if (set._id === selectedSet._id) {
                 const updateCards = set.cards.map((card) =>
                 card._id === cardId ? { ...card, isStarred: !card.isStarred } : card

@@ -121,7 +121,7 @@ export const generateQuiz = async (text, numQuestions = 5) => {
                 const trimmed = line.trim()
                 if (trimmed.startsWith("Q:")) {
                     question = trimmed.substring(2).trim()
-                } else if (trimmed.match(/^D\d:/)) {
+                } else if (trimmed.match(/^O\d:/)) {
                     options.push(trimmed.substring(3).trim())
                 } else if (trimmed.startsWith("C:")) {
                     correctAnswer = trimmed.substring(2).trim()

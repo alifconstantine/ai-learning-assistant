@@ -98,6 +98,14 @@ export const generateQuiz = async (req, res, next) => {
             parseInt(numQuestions)
         )
 
+        if (!questions || questions.length === 0) {
+            return res.status(500).json({
+                success: false,
+                error: "AI failed to generate questions. The response was empty.",
+                statusCode: 500
+            })
+        }
+
         // Save to database
         const quiz = await Quiz.create({
             userId: req.user._id,

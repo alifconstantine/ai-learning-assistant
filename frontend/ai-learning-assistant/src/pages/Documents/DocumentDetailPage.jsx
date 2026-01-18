@@ -9,6 +9,7 @@ import Tabs from "../../components/common/Tabs"
 import ChatInterface from "../../components/chat/ChatInterface"
 import AiActions from "../../components/ai/AiActions"
 import FlashcardManager from "../../components/flashcards/FlashcardManager"
+import QuizManager from "../../components/quizzes/QuizManager"
 
 const DocumentDetailPage = () => {
 
@@ -99,7 +100,7 @@ const DocumentDetailPage = () => {
   }
 
   const renderQuizzesTab = () => {
-    return "renderQuizzesTab"
+    return <QuizManager documentId={id}/>
   }
 
   const tabs = [

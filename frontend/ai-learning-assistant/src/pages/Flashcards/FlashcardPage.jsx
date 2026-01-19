@@ -58,13 +58,13 @@ const FlashcardPage = () => {
 
   const handleNextCard = () => {
     handleReview(currentCardIndex)
-    setCurrentCardIndex((prevIndex) => (prevIndex + 1) % flashcardSets.length)
+    setCurrentCardIndex((prevIndex) => (prevIndex + 1) % flashcards.length)
   }
 
   const handlePrevCard = () => {
     handleReview(currentCardIndex)
     setCurrentCardIndex(
-      (prevIndex) => (prevIndex - 1 + flashcardSets.length) % flashcardSets.length
+      (prevIndex) => (prevIndex - 1 + flashcards.length) % flashcards.length
     )
   }
 
@@ -125,11 +125,11 @@ const FlashcardPage = () => {
     const currentCard = flashcards[currentCardIndex]
 
     return (
-      <div className="">
-        <div className="">
+      <div className="flex flex-col items-center space-y-6">
+        <div className="w-full max-w-md">
           <Flashcard flashcard={currentCard} onToggleStar={handleToggleStar}/>
         </div>
-        <div className="">
+        <div className="flex items-center gap-4">
           <Button
             onClick={handlePrevCard}
             variant="secondary"
@@ -137,7 +137,7 @@ const FlashcardPage = () => {
           >
             <ChevronLeft size={16} /> Previous
           </Button>
-          <span className="">
+          <span className="text-sm text-neutral-600">
             {currentCardIndex + 1} / {flashcards.length}
           </span>
           <Button
@@ -145,14 +145,85 @@ const FlashcardPage = () => {
             variant="secondary"
             disabled={flashcards.length <= 1}
           >
-            Next <ChevronLeft size={16} />
+            Next <ChevronRight size={16} />
           </Button>
         </div>
       </div>
     )
   }
   return (
-    <div>FlashcardPage</div>
+    <div>
+      <div className="mb-4">
+        <Link
+          to={`/document/${documentId}`}
+          className="inline-flex items-center gap-2 text-sm text-neutral-600 hover:text-neutral-900 transition-colors"
+        >
+          <ArrowLeft size={16}/>
+          Back to Document
+        </Link>
+      </div>
+      <PageHeader title="Flashcards">
+        <div className="flex gap-2">
+          {!loading &&
+            (flashcards.length > 0 ? (
+              <>
+                <Button
+                  onClick={() => setIsDeleteModalOpen(true)}
+                  disabled={deleting}
+                >
+                  <Trash2 size={16}/> Delete Set
+                </Button>
+              </>
+            ) : (
+              <Button
+                onClick={handleGenerateFlashcards}
+                disabled={generating}
+              >
+                {generating ? (
+                  <Spinner/>
+                ):(
+                  <>
+                    <Plus size={16}/> Generate Flashcards
+                  </>
+                )}
+              </Button>
+            ))
+          }
+        </div>
+      </PageHeader>
+
+      {renderFlashcardContent()}
+
+      <Modal
+        isOpen={isDeleteModalOpen}
+        onClose={() => setIsDeleteModalOpen(false)}
+        title="Confirm Delete Flashcard Set"
+      >
+        <div className="space-y-2">
+          <p className="text-sm text-neutral-600">
+            Are you sure you want to delete all flashcards for this document?
+            This action cannot be undone.
+          </p>
+          <div className="flex justify-end gap-2 pt-2">
+            <Button
+              type="button"
+              variant="secondary"
+              onClick={() => setIsDeleteModalOpen(false)}
+              disabled={deleting}
+            >
+              Cancel
+            </Button>
+            <Button
+              onClick={handleDeleteFlashcardSet}
+              disabled={deleting}
+              className="bg-red-500 hover:bg-red-600 active:bg-red-700 focus:ring-red-500"
+            >
+              {deleting ? "Deleting..." : "Delete"}
+            </Button>
+          </div>
+        </div>
+      </Modal>
+    </div>
   )
 }
 

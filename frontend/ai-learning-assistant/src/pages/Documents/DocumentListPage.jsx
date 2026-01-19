@@ -290,7 +290,7 @@ const DocumentListPage = () => {
             {/* Modal Header */}
             <div className="mb-6">
               <div className="w-12 h-12 rounded-xl bg-linear-to-r from-red-100 to-red-200 flex items-center justify-center mb-4">
-                <Trash2 className="w-6 h-6 text-red-600" strokeWidth={2}/>
+                <Trash2 className="w-6 h-6 text-red-600" strokeWidth={2} />
               </div>
               <h2 className="text-xl font-medium text-slate-900 tracking-tight">
                 Confirm Deletion
@@ -323,7 +323,7 @@ const DocumentListPage = () => {
               >
                 {deleting ? (
                   <span className="flex items-center justify-center gap-2">
-                    <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin"/>
+                    <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
                     Deleting..
                   </span>
                 ) : (

@@ -119,7 +119,7 @@ const DashboardPage = () => {
                     id: doc._id,
                     description: doc.title,
                     timestamp: doc.lastAccessed,
-                    link: `/documents/${doc._id}`,
+                    link: `/document/${doc._id}`,
                     type: "document",
                   })
                 ),

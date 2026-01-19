@@ -60,11 +60,10 @@ const Sidebar = ({ isSidebarOpen, toggleSidebar }) => {
               onClick={toggleSidebar}
               className={({ isActive }) =>
                 `group flex items-center gap-3 px-4 py-2.5 text-sm font-semibold rounded-xl transition-all duration-200
-                    ${
-                      isActive
-                        ? "bg-linear-to-r from-emerald-500 to-teal-500 text-white shadow-lg shadow-emerald-500/25"
-                        : "text-slate-700 hover:bg-slate-100 hover:text-slate-900"
-                    }`
+                    ${isActive
+                  ? "bg-linear-to-r from-emerald-500 to-teal-500 text-white shadow-lg shadow-emerald-500/25"
+                  : "text-slate-700 hover:bg-slate-100 hover:text-slate-900"
+                }`
               }
             >
               {({ isActive }) => (
@@ -72,9 +71,8 @@ const Sidebar = ({ isSidebarOpen, toggleSidebar }) => {
                   <link.icon
                     size={18}
                     strokeWidth={2.5}
-                    className={`transition-transform duration-200 ${
-                      isActive ? "" : "group-hover:scale-110"
-                    }`}
+                    className={`transition-transform duration-200 ${isActive ? "" : "group-hover:scale-110"
+                      }`}
                   />
                   {link.text}
                 </>

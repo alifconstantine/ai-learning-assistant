@@ -13,7 +13,7 @@ import QuizManager from "../../components/quizzes/QuizManager"
 
 const DocumentDetailPage = () => {
 
-  const {id} = useParams()
+  const { id } = useParams()
   const [document, setDocument] = useState(null)
   const [loading, setLoading] = useState(true)
   const [activeTab, setActiveTab] = useState('Content')
@@ -62,7 +62,7 @@ const DocumentDetailPage = () => {
       <div className="bg-white border border-gray-300 rounded-lg overflow-hidden shadow-sm">
         <div className="flex items-center justify-between p-4 bg-gray-50 border-b border-gray-300">
           <span className="text-sm font-medium text-gray-700">Document Viewer</span>
-          <a 
+          <a
             href={pdfUrl}
             target="_blank"
             rel="noopener noreferrer"
@@ -73,7 +73,7 @@ const DocumentDetailPage = () => {
           </a>
         </div>
         <div className="bg-gray-100 p-1">
-          <iframe 
+          <iframe
             src={pdfUrl}
             className="w-full h-[70vh] bg-white rounded border border-gray-300"
             title="PDF Viewer"
@@ -88,27 +88,27 @@ const DocumentDetailPage = () => {
   }
 
   const renderChat = () => {
-    return <ChatInterface/>
+    return <ChatInterface />
   }
 
   const renderAIActions = () => {
-    return <AiActions/>
+    return <AiActions />
   }
 
   const renderFlashcardsTab = () => {
-    return <FlashcardManager documentId = {id} />
+    return <FlashcardManager documentId={id} />
   }
 
   const renderQuizzesTab = () => {
-    return <QuizManager documentId={id}/>
+    return <QuizManager documentId={id} />
   }
 
   const tabs = [
-    { name: 'Content', label: 'Content', content: renderContent()},
-    { name: 'Chat', label: 'Chat', content: renderChat()},
-    { name: 'AI Actions', label: 'AI Actions', content: renderAIActions()},
-    { name: 'Flashcards', label: 'Flashcards', content: renderFlashcardsTab()},
-    { name: 'Quizzes', label: 'Quizzes', content: renderQuizzesTab()},
+    { name: 'Content', label: 'Content', content: renderContent() },
+    { name: 'Chat', label: 'Chat', content: renderChat() },
+    { name: 'AI Actions', label: 'AI Actions', content: renderAIActions() },
+    { name: 'Flashcards', label: 'Flashcards', content: renderFlashcardsTab() },
+    { name: 'Quizzes', label: 'Quizzes', content: renderQuizzesTab() },
   ]
 
   if (loading) {
@@ -122,12 +122,12 @@ const DocumentDetailPage = () => {
     <div>
       <div className="mb-4">
         <Link to="/documents" className="inline-flex items-center gap-2 text-sm text-neutral-600 hover:text-neutral-900 transition-colors">
-          <ArrowLeft size={16}/>
+          <ArrowLeft size={16} />
           Back to Documents
         </Link>
       </div>
-      <PageHeader title={document.data.title}/>
-      <Tabs tabs={tabs} activeTab={activeTab} setActiveTab={setActiveTab}/>
+      <PageHeader title={document.data.title} />
+      <Tabs tabs={tabs} activeTab={activeTab} setActiveTab={setActiveTab} />
     </div>
   )
 }
